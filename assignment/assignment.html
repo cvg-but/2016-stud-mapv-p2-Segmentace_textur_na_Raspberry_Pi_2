@@ -1,0 +1,123 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+
+  <title>Computer Vision</title>
+
+  <link REL="SHORTCUT ICON" HREF="../../_img/logo_MIDAS.ico">
+
+  <base target="_parent">
+
+  <style type="text/css">
+    p {text-align: justify;}
+  </style>
+
+  <script type="text/javascript">
+    function resize_blocks() {
+      document.getElementById("CONTENT").style.height = document.body.clientHeight-100;
+      document.getElementById("FOOT").style.top       = document.body.clientHeight-18;
+    }
+    
+  </script>
+  
+  <script type="text/javascript" src="./carousel/swfobject.js"></script>
+</head>
+
+<body bgcolor="#A0A0A0" background="../../_img/bckg.bmp" text="#000000" leftmargin="0" topmargin="0" marginheight="0" marginwidth="0">
+
+<table width="100%" border="0" cellpadding="10">
+  <tr>
+    <td align="left">
+    <H1>Projekt 6 - Segmentace textur na Raspberry Pi 2 (vedoucí D. Davídek)</H1>
+    </td>
+  </tr>
+
+  <tr>
+    <td align="left">
+      <H2>Zadání</H2>
+      <p>
+Cílem projektu je implementovat alespoň dva typy algoritmů pro segmentaci textur bez předlohy na výpočetním modulu <em>Raspberry Pi 2</em> a obrazovém vstupu z kamery. Dále vytvořit databázi obrazových předloh (viz níže) čítající alespoň 20 obrazů a dohromady použít alespoň 10 typů textur. Ve výsledcích práce je nutné provést diskuzi na téma výhod a nevýhod jednotlivých segmentačních algoritmů a porovnat je s jedním dalším ne nutně implementovaným algoritmem.
+	  </p>
+
+
+
+Software:
+<ul>
+	<li>V rámci linuxové distribuce Raspbian rozchoďte knihovny pro zpracování obrazu OpenCV 3.X <sup>[1]</sup></li>
+	<li>Jako programovací jazyk využijte C/C++ nebo Python</li>
+</ul>
+Vstupy:
+<ul>
+	<li>Osvětlovací soustava a snímací aparatura dle vlastního návrhu</li>
+	<li>Raspberry Pi 2 s kamerovým modulem / usb kamerou</li>
+	<li>Papír s vytištěnými texturami dle předlohy pro snímání kamerou</li>
+	<li>Databáze obrazových předloh = obrazy složené z regionů s různou texturou
+<ul>
+	<li>regiony mohou mít ostré či prolínající se okraje</li>
+	<li>regiony by neměli být pouze pravoúhlými čtyřúhelníky</li>
+	<li>na obrazu může být více regionů se stejnou texturou</li>
+	<li>minimálně 4 regiony s různými texturami na jednom obraze</li>
+	<li>formát barevný png, rozlišení minimálně 1280x960</li>
+</ul>
+</li>
+</ul>
+Výstupy:
+<ul>
+	<li>Teoretický rozbor a porovnání dvou použitých a jednoho dalšího algoritmu pro segmentaci textur (výpočetní rychlost, invariance vůči transformacím atp.)</li>
+	<li>Alespoň dva algoritmy pro texturovou segmentaci obrazu z kamery</li>
+	<li>Snaha o nízkou výpočetní náročnost - jednotky FPS</li>
+	<li>Dva módy programu ovládané předáním argumentu při spuštění
+<ul>
+	<li>Kamerový mód
+<ul>
+	<li>Vstup je přebírán z kamery</li>
+	<li>Vstupní a výstupní obraz je zobrazen do okna jež se periodicky překresluje</li>
+</ul>
+</li>
+	<li>Vstupem je obraz/obrazy na disku
+<ul>
+	<li>Vstupem jsou data předána argumentem = obrázek / obrazy z jedné složky</li>
+	<li>Výstupem jsou segmentované obrazy uložené se sufixem na disk</li>
+</ul>
+</li>
+</ul>
+</li>
+	<li>Výstupní segmentovaný obraz by měl být indexovanou maticí, kdy jednotlivé pixely segmentů se stejnou texturou obsahují index této textury.</li>
+</ul>
+
+
+    </td>
+  </tr>
+
+  <tr>
+    <td align="left">
+      <H2>Obrazy</H2>
+	  Ilustrace 1: Kombinovaný obraz předlohy (vlevo) a kamery (vpravo). Bounding box předlohy v obrazu kamery (bíle)
+	  <div align="left">
+		<img src="segment_texture.png" alt="" width="50%" border="0" />
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+<h2>Klíčová slova</h2>
+texture detection and segmentation, opencv, raspberry pi
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+<h2>Odkazy</h2>
+[1] <a href="http://www.pyimagesearch.com/2015/10/26/how-to-install-opencv-3-on-raspbian-jessie/">Install OpenCV 3 (optionally with Python) on Raspbian
+</a>
+<br>[2] Medical image processing, reconstruction and restoration, Jan Jiří
+<br>[3] <a href="https://moodle.vutbr.cz/mod/resource/view.php?id=50445">Prezentace: Texturní analýza obrazů, MASO</a>
+<br>[4] Příklady texturových databází: <a href="http://www.textures.com/">[A]</a>, <a href="http://vismod.media.mit.edu/vismod/imagery/VisionTexture/vistex.html">[B]</a>, <a href="http://www.cs.columbia.edu/CAVE/software/curet/">[C]</a>
+
+    </td>
+  </tr>
+
+</table>
+
+</body>
+</html>
